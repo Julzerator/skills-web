@@ -61,6 +61,7 @@
       margin-right: 1em;
     }
   </style>
+  <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body>
 
@@ -97,7 +98,11 @@
 </fieldset>
 
 <script>
-  // code here for above problem
+  var button = document.getElementById("popup-alert-button");
+  function alertClick() {
+    alert("Is this the Popup you are looking for?");
+  }
+  button.addEventListener('click',alertClick);
 </script>
 
 
@@ -111,11 +116,25 @@
 <fieldset>
   <i id="message-to-change">hello</i>
   <button id="change-hello-to-goodbye-button">Turn <b>Hello</b> Into <b>Goodbye</b></button>
-  <!-- Hey, look, that was another way to do a button - what might it be good for? -->
+  <!-- Hey, look, that was another way to do a button - what might it be good for? 
+      Buttons created with the BUTTON element function just like buttons created with the INPUT element, but they offer richer rendering possibilities: the BUTTON element may have content. For example, a BUTTON element that contains an image functions like and may resemble an INPUT element whose type is set to “image”, but the BUTTON element type allows content.
+      The Button Element - W3C
+      -->
 </fieldset>
 
 <script>
-  // code here for above-problem
+  var changeText = document.getElementById("message-to-change");
+  var changeButton = document.getElementById("change-hello-to-goodbye-button");
+  function changeClick() {
+    if (changeText.innerText === "hello") {
+      changeText.innerText = "goodbye";
+      console.log("goodbye");
+    } else if (changeText.innerText === "goodbye") {
+      changeText.innerText = "hello";
+      console.log("hello");
+    };
+  }
+  changeButton.addEventListener('click',changeClick)
 </script>
 
 <div class="hint">
@@ -144,7 +163,12 @@
 </fieldset>
 
 <script>
-  // code here for above problem
+  var formToPrevent = document.getElementById("prevent-form-submission-form");
+  function formSubmit(e) {
+    e.preventDefault();  //SO COOL!!!
+    alert("Is this the Popup you are looking for?");
+  };
+  formToPrevent.addEventListener('submit',formSubmit);
 </script>
 
 <div class="hint">
@@ -176,20 +200,22 @@
 <script>
 //  Here's a stub of a function you can use!
 
-//  function reverseString() {
-//    var msg = "Porcupines are cute";
-//
-//    // do some stuff here to reverse that string into a new variable
-//    var newMsg = "This should be the reversed string";
-//
-//    alert(newMsg);
-//  }
+ function reverseString() {
+   var msg = "Porcupines are cute";
+   var newMsg = "";
+
+   // do some stuff here to reverse that string into a new variable
+   for (var i = msg.length - 1; i >= 0; i--)
+    newMsg += msg[i];
+
+   alert(newMsg);
+ }
 
 // Here's a stub of event stuff you could use
 //
 
-//  var button = document.getElementById('reverse-string-button');
-//  button.addEventListener('click', reverseString);
+ var button = document.getElementById('reverse-string-button');
+ button.addEventListener('click', reverseString);
 </script>
 
 
@@ -213,7 +239,10 @@
 </fieldset>
 
 <script>
-  // code here for above problem
+  function alertMe() {
+    alert("Is this the Popup you are looking for?");
+  }
+  $('.tricky-to-find').on('click',alertMe);
 </script>
 
 <div class="hint">
@@ -240,7 +269,10 @@
 </fieldset>
 
 <script>
-  // put your code here
+  function dogzDrool() {
+    $('img#kittenz-rule').attr('src','http://safe4work.org/wp-content/uploads/2011/03/cute.jpg');
+  };
+  $('#kittenz-rule').on('dblclick',dogzDrool);
 </script>
 
 <div class="hint">
@@ -273,7 +305,10 @@
 </fieldset>
 
 <script>
-  // put your code here
+  function porcupineAppear() {
+    setTimeout(function() { $('#cute-porcupine-image').slideDown(1000); }, 1000);
+  };
+  $('#make-a-porcupine').on('click',porcupineAppear);
 </script>
 
 <div class="hint">
@@ -305,7 +340,14 @@
 </fieldset>
 
 <script>
-  // put your code here
+  $('#agreeable-form').on('submit', function(e){
+    var before = 'I like '
+    var favFood = $('#favorite-food-input').val()
+    var after = ', too.'
+    var favFood = before + favFood + after
+    e.preventDefault();
+    $('#agreeable-text').html(favFood);
+  });
 </script>
 
 <div class="hint">
@@ -351,7 +393,31 @@
 </fieldset>
 
 <script>
-  // put your code here
+  function guessingGame() {
+    var player = prompt("What is your name?");
+    var playing = true;
+
+    // Set the number
+    var answer = Math.floor((Math.random() * 100) + 1);
+    console.log(answer);
+    var guess = 0;
+    while (playing === true){
+      guess = prompt(player + ", what is your guess?");
+      guess = Number(guess);
+      if (guess === "NaN") {
+        window.alert("Please enter a real number.");
+      } else if (guess < answer) {
+        window.alert("That number is too small. Guess again!");
+      } else if (guess > answer) {
+        window.alert("That number is too big. Guess again!");
+      } else if (guess === answer) {
+        window.alert("Wow, " + player + "! " + answer + " was exactly the number I was thinking. Click Play! if you want to play again!");
+        playing = false;
+      };
+    };  
+  };
+  $('#play-guessing-game').on('click',guessingGame);
+
 </script>
 
 <div class="hint">
