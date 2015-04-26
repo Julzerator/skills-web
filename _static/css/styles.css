@@ -1,0 +1,59 @@
+/*CSS for application-form.html*/
+
+body {/*
+	width: 900px;*/
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40px;
+    padding-left: 100px;
+
+}
+
+h1 {
+	font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    color: #333;
+    
+}
+
+input, textarea {
+	background-color: lightyellow;
+	border-radius: 8px;
+	border: 1px solid magenta;
+}
+
+select {
+   background-color: lightyellow;
+   border: 1px solid magenta;
+   border-radius: 8px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
+p {
+	font-family: 'Oswald', sans-serif;
+    color: #333;
+}
+
+form {
+	padding: 25px;
+	font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    color: #333;
+}
+
+.instruction {
+    border-radius: 25px;
+    border: 2px solid green;
+    padding-left: 25px;
+    padding-right: 15px;
+    width: 500px; /*
+    margin-left: auto;
+    margin-right: auto;*/
+}
+
+#application_form {
+	border-radius: 25px;
+	border: 2px solid black;
+	width: 500px;
+}

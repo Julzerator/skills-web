@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Application Form</title>
+		<link rel='stylesheet' href='./_static/css/styles.css'>
+	</head>
+	<body>
+		<h1>Ubermelon Application Form</h1>
+		<div class='instruction'>
+			<p>Thank you for your interest in working with us here at the best place on the web for melons! 
+			Please enter the following information and we will follow up with you soon!</p>
+		</div>
+		<br><br>
+		<form action='/application' method='POST' id='application_form'>
+			<label id='first-name'>
+				First name: <input type='text' name='firstname'>
+			</label>
+			<label id='last-name'>
+				Last name: <input type='text' name='lastname'>
+			</label>
+			<br>
+			<label id='salary-requirements'>
+				Salary Requirements: <input type='number' name='salaryreq'>
+			</label>
+			<br>
+			<label id='job-title'>
+				<select name='jobtitle'>
+					<option value='software_engineer'>Software Engineer</option>
+					<option value='qa_engineer'>QA Engineer</option>
+					<option value='product_manager'>Product Manager</option>
+				</select>
+			</label>
+			<br>
+			<label id='submit'>
+				<input type='submit'>
+			</label>
+		</form>
+	</body>
+</html>
