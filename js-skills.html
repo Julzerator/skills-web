@@ -411,7 +411,7 @@
       } else if (guess > answer) {
         window.alert("That number is too big. Guess again!");
       } else if (guess === answer) {
-        window.alert("Wow, " + player + "! " + answer + " was exactly the number I was thinking. Click Play! if you want to play again!");
+        window.alert("Wow, " + player + "! " + answer + ' was exactly the number I was thinking. Click "Play!" if you want to play again!');
         playing = false;
       };
     };  
@@ -457,7 +457,43 @@
 </fieldset>
 
 <script>
-  // put your code here
+// Argh! There is no sync. paused input/output tools in browser JS except of alert, confirm and prompt!!
+  function guessingGame2() {
+    $('#play-guessing-game-2').prop('disabled', true);
+    var player2 = prompt("What is your name?");
+    // console.log(player2);
+    $('#number-guessed').prop('disabled', false);
+    $('#try-this-number').prop('disabled', false);
+
+    $('#number-guessing-msg').html('Welcome to the Less Annoying Number-Guessing Game ' + player2 + ' ! <br> Please enter your guess!');
+
+    // Set the number
+    var answer2 = Math.floor((Math.random() * 100) + 1);
+    // console.log("Answer2 is " + answer2);
+    var guess2 = 0;
+    // console.log(guess2);
+    $('#try-this-number').on('click', function(f) {
+      console.log("I made it into the guessing part!")
+      f.preventDefault();
+      guess2 = $('#number-guessed').val();
+      // console.log("Guess2 is " + guess2);
+      if (guess2 == answer2) {
+        $('#number-guessing-msg').html("Wow, " + player2 + "! The number " + answer2 + ' was exactly what I was thinking. <br>Click "Play!" if you want to play again!');
+        $('#number-guessed').val('');
+        $('#play-guessing-game-2').prop('disabled', false);
+        $('#number-guessed').prop('disabled', true);
+        $('#try-this-number').prop('disabled', true);
+      } else if (guess2 > answer2) {
+        $('#number-guessing-msg').html("That number is too big. <br>Guess again!");
+        $('#number-guessed').val('');
+      } else if (guess2 < answer2) {
+        $('#number-guessing-msg').html("That number is too small. <br>Guess again!");
+        $('#number-guessed').val('');
+      };
+    });
+  };
+  $('#play-guessing-game-2').on('click',guessingGame2);
+
 </script>
 
 
