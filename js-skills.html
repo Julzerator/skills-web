@@ -528,9 +528,37 @@
 </fieldset>
 
 <script>
-    var PRIME_COLORS = ['orange', 'midnightblue', 'darkgoldenrod', 'green', 'purple'];
+  var PRIME_COLORS = ['orange', 'midnightblue', 'darkgoldenrod', 'green', 'purple'];
+  var last_prime = 11;
+  var prime = false;
+  var i_i = -1;
 
+  function nextFivePrime() {
+    while (i_i < 4) {
+        console.log(i_i);
+        last_prime += 1;
+        i_i += 1;
+        console.log(last_prime);
+        prime = isPrime(last_prime);
+        if (prime === true) {
+          $('#prime-box-area').append('<div class="prime-box" style="background-color: ' + PRIME_COLORS[i_i] + '">' + last_prime + '</div>');
+        } else {
+          i_i -= 1;
+        };
+        console.log(prime);
+    };
+  };
   // put the rest of your code here
+  function isPrime(n) {
+    if (n <= 3) { return n > 1; };
+    if (n % 2 == 0 || n % 3 == 0) { return false; };
+    for (var  i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) { return false; };
+    };
+    return true;
+  };
+  $('#make-prime-boxes').on('click', nextFivePrime)
+
 </script>
 
 
