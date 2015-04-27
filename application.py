@@ -17,16 +17,16 @@ def application_page():
 	return render_template("application-form.html")
 
 
-@app.route("/application" methods=['POST'])
+@app.route("/application", methods=['POST','GET'])
 def application_return():
-	first_name = request.args.get("firstname")
-	last_name = request.args.get("lastname")
-	salary_requirements = request.args.get("salaryreq")
-	job_title = request.args.get("jobtitle")
+	first_name = request.form["firstname"]
+	last_name = request.form["lastname"]
+	salary_requirements = request.form["salaryreq"]
+	job_title = request.form["jobtitle"]
 
-	return render_template("confirm.html", first_name=firstname, 
-		last_name=lastname, salary_requirements=salaryreq, 
-		job_title=jobtitle)
+	return render_template("confirm.html", first=first_name, 
+		last=last_name, salary=salary_requirements, 
+		job=job_title)
 
 
 if __name__ == "__main__":
